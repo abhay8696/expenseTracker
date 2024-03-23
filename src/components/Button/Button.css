@@ -1,0 +1,14 @@
+
+.Button{
+    border-radius: 0.75rem;
+    color: inherit;
+    background-color: green;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.largeButton{
+    padding: 0.5rem 2rem;
+    font-weight: 500;
+}
