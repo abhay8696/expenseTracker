@@ -2,4 +2,26 @@
 header{
     background-color: #636362;
     border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3rem;
+}
+
+
+@media screen and (min-width: 780px) and (max-width: 929px) {
+    header{
+        flex-wrap: wrap-reverse;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 929px) {
+    header{
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }

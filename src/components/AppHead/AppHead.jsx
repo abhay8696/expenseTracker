@@ -8,7 +8,7 @@ import PieChart from '../PieChart/PieChart';
 
 const AppHead = () => {
     return (
-        <header>
+        <header className='AppHead'>
             <Card />
             <Card />
             <PieChart />
