@@ -1,5 +1,5 @@
 
-.TransactionBody{
+.TransactionBody, .TopExpensesBody{
     background-color: white;
     flex: 1;
     border-radius: 0.75rem;
