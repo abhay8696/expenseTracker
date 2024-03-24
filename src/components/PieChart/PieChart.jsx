@@ -8,9 +8,13 @@ const PieChart = () => {
     return (
         <div className='pieChart'>
             <div className='pie'>
-        
+
             </div>
-            <PieLabel />
+            <div className='pieLabelsDiv'>
+                <PieLabel />
+                <PieLabel />
+                <PieLabel />
+            </div>
         </div>
     );
 };
