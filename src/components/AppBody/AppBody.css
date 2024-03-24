@@ -15,6 +15,6 @@
 
 @media screen and (min-width: 780px) {
     .AppBody{
-        flex-direction: row;
+        flex-direction: row; 
     }
 }
