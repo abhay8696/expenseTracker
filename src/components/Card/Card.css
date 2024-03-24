@@ -15,8 +15,8 @@
     margin: 0;
 }
 .cardTextGreen{
-    color: #B5DC52;
+    color: var(--color-green);
 }
 .cardTextRed{
-     color:  #F4BB4A;
+     color:  var(--color-orange);
 }

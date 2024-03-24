@@ -2,14 +2,22 @@
 .Button{
     border-radius: 0.75rem;
     color: inherit;
-    background-color: green;
     outline: none;
     border: none;
     cursor: pointer;
 }
 
+.Button img{
+    max-width: 25px;
+}
+
 .largeButton{
     padding: 0.5rem 2rem;
+    font-weight: 500;
+}
+
+.smallButton{
+    padding: 0.5rem;
     font-weight: 500;
 }
 
@@ -19,4 +27,11 @@
 }
 .gradientRed{
     background: linear-gradient(90deg, #FF9595 0%, #FF4747 80%, #FF3838 100%);
+}
+
+.backgroundOrange{
+    background-color: var(--color-orange);
+}
+.backgroundRed{
+     background-color:  var(--color-red);
 }

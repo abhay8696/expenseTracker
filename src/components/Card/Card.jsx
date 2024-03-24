@@ -13,12 +13,13 @@ const Card = props => {
             <span className='cardText'>
                 <span>{text}: </span> 
                 <span className={text === "Expenses" ? "cardTextRed" : "cardTextGreen"}>
-                    {value}
+                    ₹{value}
                 </span>
             </span>
             <Button 
                 text={text === "Expenses" ? "+ Add Expense" : "+ Add Income"}
                 background={text === "Expenses" ? "gradientRed" : "gradientGreen"}
+                buttonSize = "largeButton"
             />
         </div>
     );
