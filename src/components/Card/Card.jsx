@@ -7,7 +7,9 @@ import Button from '../Button/Button';
 const Card = () => {
     return (
         <div className='card'>
-            <span>Wallet Balance: 4500</span>
+            <span className='cardText'>
+                Wallet Balance: <span className='cardTextGreen'>4500</span>
+            </span>
             <Button />
         </div>
     );
