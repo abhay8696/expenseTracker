@@ -1,0 +1,7 @@
+
+.AppBody{
+    background-color: rebeccapurple;
+    width: 100%;
+    flex: 1;
+    margin-top: 1rem;
+}
