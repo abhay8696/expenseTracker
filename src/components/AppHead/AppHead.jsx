@@ -6,11 +6,13 @@ import "./AppHead.css"
 import Card from '../Card/Card';
 import PieChart from '../PieChart/PieChart';
 
-const AppHead = () => {
+const AppHead = props => {
+    //props
+    const { balance, expenses } = props;
     return (
         <header className='AppHead'>
-            <Card />
-            <Card />
+            <Card text="Wallet balance" value={balance}/>
+            <Card text="Expenses" value={expenses}/>
             <PieChart />
         </header>
     );

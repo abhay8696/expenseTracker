@@ -4,13 +4,22 @@ import "./Card.css"
 //components
 import Button from '../Button/Button';
 
-const Card = () => {
+const Card = props => {
+    //props
+    const { text, value } = props;
+
     return (
         <div className='card'>
             <span className='cardText'>
-                Wallet Balance: <span className='cardTextGreen'>4500</span>
+                <span>{text}: </span> 
+                <span className={text === "Expenses" ? "cardTextRed" : "cardTextGreen"}>
+                    {value}
+                </span>
             </span>
-            <Button />
+            <Button 
+                text={text === "Expenses" ? "+ Add Expense" : "+ Add Income"}
+                background={text === "Expenses" ? "gradientRed" : "gradientGreen"}
+            />
         </div>
     );
 };

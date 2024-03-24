@@ -12,3 +12,11 @@
     padding: 0.5rem 2rem;
     font-weight: 500;
 }
+
+.gradientGreen{
+    background: linear-gradient(90deg, #B5DC52 0%, #89E148 100%);
+
+}
+.gradientRed{
+    background: linear-gradient(90deg, #FF9595 0%, #FF4747 80%, #FF3838 100%);
+}
