@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 //styles
 import "./Modal.css"
-import Button from '../Button/Button';
 import FormButtons from '../FormButtons/FormButtons';
 
 const Modal = props => {
@@ -17,7 +16,7 @@ const Modal = props => {
         const key = evt.target.name, value = evt.target.value;
         setFormData({...formData, [key]: value });
     }
-    const expenseForm = () => {
+    const ExpenseForm = () => {
         return (
             <form className='modalForm expensesForm' onSubmit={handleSubmit}>
                 <div className='formInputsDiv'>
@@ -39,17 +38,19 @@ const Modal = props => {
             </form>
         )
     }
-    const balanceForm = () => {
+    const BalanceForm = () => {
         return(
             <form className='modalForm balanceForm' onSubmit={handleSubmit}>
-                <input 
-                className="formInput" 
-                onChange={handleChange} 
-                placeholder='Income Amount' 
-                type='number' 
-                name='amount' 
-                // required
-                />
+                <div className='balanceFormInputDiv'>
+                    <input 
+                    className="formInput" 
+                    onChange={handleChange} 
+                    placeholder='Income Amount' 
+                    type='number' 
+                    name='amount' 
+                    // required
+                    />
+                </div>
                 <FormButtons text="Add Balance" toggleModal={toggleModal}/>
             </form>
         )
@@ -59,7 +60,7 @@ const Modal = props => {
             <div className='modalBody' onClick={e => e.stopPropagation()}>
                 <div className='modalHead'>{text}</div>
                 {
-                    text === "Add Balance" ? balanceForm() : expenseForm()
+                    text === "Add Balance" ? <BalanceForm /> : <ExpenseForm />
                 }
             </div>
         </div>

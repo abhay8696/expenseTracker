@@ -7,7 +7,7 @@ import Modal from '../Modal/Modal';
 
 const Card = props => {
     //props
-    const { text, value } = props;
+    const { text, value} = props;
     //states
     const [modalOn, setModalOn] = useState(false);
     //functions
