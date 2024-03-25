@@ -18,34 +18,72 @@ const Modal = props => {
     }
     const expenseForm = () => {
         return (
-            <form className='modalForm' onSubmit={handleSubmit}>
-                <input onChange={handleChange} placeholder='Title' type='text' name='title'/>
-                <input onChange={handleChange} placeholder='Price' type='number' name='price'/>
-                <select onChange={handleChange} placeholder='Select Category' name='category'>
-                    <option value="Food">Food</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Travel">Travel</option>
-                </select>
-                <input onChange={handleChange} placeholder='dd/mm/yyyy' type='date' name='date'/>
-                <button type='submit'>Add Expense</button>
-                <button onClick={toggleModal}>Cancel</button>
+            <form className='modalForm expensesForm' onSubmit={handleSubmit}>
+                <div className='formInputsDiv'>
+                    <input 
+                    className="formInput" onChange={handleChange} placeholder='Title' type='text' name='title'/>
+                    <input 
+                    className="formInput" onChange={handleChange} placeholder='Price' type='number' name='price'/>
+                    <select 
+                    className="formInput" onChange={handleChange} placeholder='Select Category' name='category'>
+                        <option value="Select Category">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Travel">Travel</option>
+                    </select>
+                    <input 
+                    className="formInput" onChange={handleChange} placeholder='dd/mm/yyyy' type='date' name='date'/>
+                </div>
+                <div className='formButtons'>
+                    <Button 
+                    text="Add Expense" 
+                    background="backgroundOrange" 
+                    buttonSize="largeButton"
+                    buttonType="submit"
+                    />
+                    <Button 
+                    text="Cancel" 
+                    background="backgroundWhite" 
+                    buttonSize="largeButton"
+                    clickFunction={toggleModal}
+                    />
+                </div>
             </form>
         )
     }
     const balanceForm = () => {
         return(
-            <form className='modalForm' onSubmit={handleSubmit}>
-                <input onChange={handleChange} placeholder='Income Amount' type='number' name='amount' />
+            <form className='modalForm balanceForm' onSubmit={handleSubmit}>
+                <input 
+                className="formInput" 
+                onChange={handleChange} 
+                placeholder='Income Amount' 
+                type='number' 
+                name='amount' 
+                // required
+                />
                 {/* <Button /> */}
-                <button type='submit'>Add Balance</button>
-                <button onClick={toggleModal}>Cancel</button>
+                <div className='formButtons'>
+                    <Button 
+                    text="Add Balance" 
+                    background="backgroundOrange" 
+                    buttonSize="largeButton"
+                    buttonType="submit"
+                    />
+                    <Button 
+                    text="Cancel" 
+                    background="backgroundWhite" 
+                    buttonSize="largeButton"
+                    clickFunction={toggleModal}
+                    />
+                </div>
             </form>
         )
     }
     return (
         <div className='Modal' onClick={toggleModal}>
             <div className='modalBody' onClick={e => e.stopPropagation()}>
-                <h4>{text}</h4>
+                <div className='modalHead'>{text}</div>
                 {
                     text === "Add Balance" ? balanceForm() : expenseForm()
                 }

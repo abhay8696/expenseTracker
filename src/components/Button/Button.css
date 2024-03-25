@@ -35,3 +35,7 @@
 .backgroundRed{
      background-color:  var(--color-red);
 }
+.backgroundWhite{
+    background-color: white;
+    color: #000;
+}

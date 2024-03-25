@@ -25,7 +25,7 @@ const Card = props => {
                 text={text === "Expenses" ? "+ Add Expense" : "+ Add Income"}
                 background={text === "Expenses" ? "gradientRed" : "gradientGreen"}
                 buttonSize = "largeButton"
-                toggleModal={toggleModal}
+                clickFunction={toggleModal}
             />
             {modalOn ? 
                 <Modal 

@@ -4,11 +4,12 @@ import "./Button.css"
 
 const Button = props => {
     //props
-    const { text, background, buttonSize, icon, toggleModal } = props;
+    const { text, background, buttonSize, icon, clickFunction, buttonType } = props;
     return (
         <button 
         className={`Button ${buttonSize} ${background}`}
-        onClick={toggleModal}
+        onClick={clickFunction}
+        type={buttonType}
         >
             {text || <img src={icon} />}
         </button>
