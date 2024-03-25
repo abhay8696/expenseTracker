@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 //styles
 import "./TransactionsBody.css"
 import foodIcon from "../../assets/food.svg"
 //components
 import TransactionBar from '../TransactionBar/TransactionBar';
+//contexts
+import { TransactionsContext } from '../../Contexts/AllContexts';
 
 const TransactionsBody = () => {
+    //contexts
+    const [transactionData, setTransactionData] = useContext(TransactionsContext);
+    //functions
+    const displayTransactions = () => {
+        if(transactionData && transactionData.length){
+            return(
+                transactionData.map(item => {
+                    const { name, date, price, icon } = item;
+                    return <TransactionBar name={name} date={date} amount={price} icon={icon}/>
+                })
+            )
+        }
+    }
     return (
-        <div className='TransactionBody'>
-            <TransactionBar name="Movie" date="March 20 2024" amount={500} icon={foodIcon}/>
-            <TransactionBar name="Samosa" date="March 21 2024" amount={15} icon={foodIcon}/>
-            <TransactionBar name="Auto" date="March 19 2024" amount={50} icon={foodIcon}/>
-        </div>
+        <div className='TransactionBody'> {displayTransactions()} </div>
     );
 };
 

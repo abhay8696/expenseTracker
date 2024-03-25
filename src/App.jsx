@@ -1,5 +1,9 @@
 import { useState } from 'react'
-import './App.css'
+//styles
+import './App.css';
+import foodIcon from "./assets/food.svg";
+import movieIcon from "./assets/movie.svg";
+import travelIcon from "./assets/travel.svg";
 //components
 import Navbar from './components/Navbar/Navbar'
 import AppHead from './components/AppHead/AppHead'
@@ -12,19 +16,22 @@ const dummyData = [
     name: "Movie",
     date: "March 20 2024",
     category: "entertainment",
-    amount: 300
+    price: 300,
+    icon: movieIcon
   },
   {
     name: "Samosa",
     date: "March 21 2024",
     category: "food",
-    amount: 50
+    price: 50,
+    icon: foodIcon
   },
   {
     name: "Auto",
     date: "March 19 2024",
     category: "travel",
-    amount: 150
+    price: 150,
+    icon: travelIcon
   },
 ]
 function App() {
