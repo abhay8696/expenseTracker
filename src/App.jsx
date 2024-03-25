@@ -1,34 +1,45 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+//components
+import Navbar from './components/Navbar/Navbar'
+import AppHead from './components/AppHead/AppHead'
+import AppBody from './components/AppBody/AppBody';
+//contexts
+import { TransactionsContext } from "./Contexts/AllContexts"
 
+const dummyData = [
+  {
+    name: "Movie",
+    date: "March 20 2024",
+    category: "entertainment",
+    amount: 300
+  },
+  {
+    name: "Samosa",
+    date: "March 21 2024",
+    category: "food",
+    amount: 50
+  },
+  {
+    name: "Auto",
+    date: "March 19 2024",
+    category: "travel",
+    amount: 150
+  },
+]
 function App() {
-  const [count, setCount] = useState(0)
+  const [balance, setBalance] = useState(5000);
+  const [expenses, setExpenses] = useState(0);
+  const [transactionData, setTransactionData] = useState(dummyData)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main className='App'>
+      <TransactionsContext.Provider value={[transactionData, setTransactionData]}>
+        <Navbar />
+        <AppHead balance={balance} expenses={expenses}/>
+        <AppBody transactionData={transactionData}/>
+      </TransactionsContext.Provider> 
+    </main>
   )
 }
 
