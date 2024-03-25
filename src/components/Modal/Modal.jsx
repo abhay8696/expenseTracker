@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //styles
 import "./Modal.css"
 import Button from '../Button/Button';
+import FormButtons from '../FormButtons/FormButtons';
 
 const Modal = props => {
     //props
@@ -34,20 +35,7 @@ const Modal = props => {
                     <input 
                     className="formInput" onChange={handleChange} placeholder='dd/mm/yyyy' type='date' name='date'/>
                 </div>
-                <div className='formButtons'>
-                    <Button 
-                    text="Add Expense" 
-                    background="backgroundOrange" 
-                    buttonSize="largeButton"
-                    buttonType="submit"
-                    />
-                    <Button 
-                    text="Cancel" 
-                    background="backgroundWhite" 
-                    buttonSize="largeButton"
-                    clickFunction={toggleModal}
-                    />
-                </div>
+                <FormButtons text="Add Expense" toggleModal={toggleModal}/>
             </form>
         )
     }
@@ -62,21 +50,7 @@ const Modal = props => {
                 name='amount' 
                 // required
                 />
-                {/* <Button /> */}
-                <div className='formButtons'>
-                    <Button 
-                    text="Add Balance" 
-                    background="backgroundOrange" 
-                    buttonSize="largeButton"
-                    buttonType="submit"
-                    />
-                    <Button 
-                    text="Cancel" 
-                    background="backgroundWhite" 
-                    buttonSize="largeButton"
-                    clickFunction={toggleModal}
-                    />
-                </div>
+                <FormButtons text="Add Balance" toggleModal={toggleModal}/>
             </form>
         )
     }
