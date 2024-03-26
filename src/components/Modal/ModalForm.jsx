@@ -20,7 +20,7 @@ const ModalForm = props => {
     const [formData, setFormData] = useState({
         name: "",
         price: "",
-        date: "",
+        date: new Date().toISOString().split("T")[0], //gives date in yyyy-mm-dd format
         category: "",
     })
     const [balanceFormData, setBalanceFormData] = useState({income: ""});
@@ -64,6 +64,9 @@ const ModalForm = props => {
         if(formType === "Edit Expense"){
             let newExpense = money.expenses + Number(formData.price) - Number(existingData.amount);
             let newBalance = money.balance - Number(formData.price) + Number(existingData.amount);
+
+            if(newBalance < 0) return alert("Out of balance");
+            
             //get index of transaction
             const indexOfTransaction = transactionData.findIndex(transaction => existingData.id === transaction.id);
             //store transaction data in new variable

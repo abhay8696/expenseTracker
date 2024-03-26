@@ -4,7 +4,9 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import "./PieChart.css";
 //components
 import PieLabel from '../PieLabel/PieLabel';
+//contexts
 import { TransactionsContext } from '../../Contexts/AllContexts';
+import useChartData from '../customHooks/useChartData';
 
 
 const COLORS = ['#A000FF', '#FDE006', '#FF9304'];
@@ -23,43 +25,15 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
 const PieChartComp = () => {
-    //context
-    const [transactionData, setTransactionData] = useContext(TransactionsContext);
-    const [chartData, setChartData] = useState([
-        { name: 'food', value: 0 },
-        { name: 'entertainment', value: 0 },
-        { name: 'travel', value: 0 },
-    ]);
-    //on 1st render
-    useEffect(()=> {
-        setChartData([
+    //hooks
+    const chartData  = useChartData([
             { name: 'food', value: 0 },
             { name: 'entertainment', value: 0 },
             { name: 'travel', value: 0 },
         ]);
-        calculateCategories();
-    }, [transactionData])
-    //functions
-    const calculateCategories = () => {
-        let foodTotal = 0, entertainmentTotal = 0, travelTotal = 0;
-        console.log("transactionData updated", transactionData)
-        transactionData.forEach(item => {
-            if(item.category === "food"){
-                foodTotal += Number(item.price);
-                setChartData(pre=>[{name: "food", value: foodTotal}, pre[1], pre[2]])
-            }
-            if(item.category === "entertainment"){
-                entertainmentTotal += Number(item.price);
-                setChartData(pre=>[pre[0], {name: "entertainment", value: entertainmentTotal}, pre[2]])
-            }
-            if(item.category === "travel") {
-                travelTotal += Number(item.price);
-                setChartData(pre=>[pre[0], pre[1], {name: "travel", value: travelTotal}])
-            }
-        });
-    }
+        
     return (
-        <div className='pieChart' onClick={()=> console.log(chartData)}>
+        <div className='pieChart'>
             <div className='pie'>
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart width={400} height={400}>
