@@ -12,11 +12,12 @@ const TransactionsBody = () => {
     const [transactionData, setTransactionData] = useContext(TransactionsContext);
     //functions
     const displayTransactions = () => {
+        let key = 0;
         if(transactionData && transactionData.length){
             return(
                 transactionData.map(item => {
                     const { name, date, price, icon } = item;
-                    return <TransactionBar name={name} date={date} amount={price} icon={icon}/>
+                    return <TransactionBar key={`${key++}`} name={name} date={date} amount={price} icon={icon}/>
                 })
             )
         }
