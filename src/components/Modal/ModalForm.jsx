@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 //components
 import FormButtons from '../FormButtons/FormButtons';
+//contexts
+import { MoneyContext } from '../../Contexts/AllContexts';
 
 
 const ModalForm = props => {
     //props
     const { toggleModal, formType } = props;
+    //contexts
+    const [money, setMoney] = useContext(MoneyContext);
     //states
     const [formData, setFormData] = useState({
         title: "",
@@ -21,6 +25,15 @@ const ModalForm = props => {
     }
     const handleSubmit = evt => {
         evt.preventDefault();
+        if(formType === "Add Balance"){
+            setMoney({
+                ...money,
+                balance: money.balance + balanceFormData.income
+            });
+            // console.log(balanceFormData.income)
+        }
+
+        toggleModal();
     }
 
     const expenseAndEditInput = () => {
@@ -70,13 +83,13 @@ const ModalForm = props => {
             <div className='balanceFormInputDiv'>
                 <input 
                 className="formInput" 
-                onChange={e=> setBalanceFormData(e.target.value)} 
+                onChange={e=> setBalanceFormData({income: +e.target.value})} 
                 placeholder='Income Amount' 
                 type='number' 
                 name='income' 
                 value={balanceFormData.income}
                 autoFocus
-                // required
+                required
                 />
             </div>
         )
