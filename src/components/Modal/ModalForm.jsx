@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 //components
 import FormButtons from '../FormButtons/FormButtons';
 //contexts
-import { MoneyContext } from '../../Contexts/AllContexts';
+import { MoneyContext, TransactionsContext } from '../../Contexts/AllContexts';
+//style
 
 
 const ModalForm = props => {
@@ -10,9 +11,10 @@ const ModalForm = props => {
     const { toggleModal, formType } = props;
     //contexts
     const [money, setMoney] = useContext(MoneyContext);
+    const [transactionData, setTransactionData] = useContext(TransactionsContext);
     //states
     const [formData, setFormData] = useState({
-        title: "",
+        name: "",
         price: "",
         date: "",
         category: "",
@@ -31,6 +33,8 @@ const ModalForm = props => {
                 balance: money.balance + balanceFormData.income
             });
             // console.log(balanceFormData.income)
+        }else{
+            setTransactionData([...transactionData, formData])
         }
 
         toggleModal();
@@ -40,15 +44,17 @@ const ModalForm = props => {
         return (
             <div className='formInputsDiv'>
                 <input 
+                required
                 value={formData.title}
                 className="formInput" 
                 onChange={handleChange} 
                 placeholder='Title' 
                 type='text' 
-                name='title'
+                name='name'
                 autoFocus
                 />
                 <input 
+                required
                 value={formData.price}
                 className="formInput" 
                 onChange={handleChange} 
@@ -68,6 +74,7 @@ const ModalForm = props => {
                     <option value="Travel">Travel</option>
                 </select>
                 <input 
+                required
                 value={formData.date}
                 className="formInput" 
                 onChange={handleChange} 
