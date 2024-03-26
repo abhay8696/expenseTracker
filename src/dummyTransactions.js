@@ -5,13 +5,6 @@ import travelIcon from "./assets/travel.svg";
 
 export const dummyData = [
     {
-      name: "Movie",
-      date: "March 20 2024",
-      category: "entertainment",
-      price: 300,
-      id: 1711460238577
-    },
-    {
       name: "Samosa",
       date: "March 21 2024",
       category: "food",
@@ -24,6 +17,13 @@ export const dummyData = [
       category: "travel",
       price: 150,
       id: 1711460238579
+    },
+    {
+      name: "Movie",
+      date: "March 20 2024",
+      category: "entertainment",
+      price: 300,
+      id: 1711460238577
     },
   ]
 

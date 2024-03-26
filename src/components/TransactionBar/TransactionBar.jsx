@@ -32,8 +32,8 @@ const TransactionBar = props => {
     const deleteTransaction = () => {
         const indexOfTransaction = transactionData.findIndex(item => id === item.id);
 
-        const newBalance = money.balance + amount;
-        const newExpense = money.expenses - amount;
+        const newBalance = money.balance + Number(amount);
+        const newExpense = money.expenses - Number(amount);
 
         transactionData.splice(indexOfTransaction, 1);
 

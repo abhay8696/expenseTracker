@@ -4,7 +4,7 @@ import "./AppHead.css"
 
 //components
 import Card from '../Card/Card';
-import PieChart from '../PieChart/PieChart';
+import PieChartComp from '../PieChart/PieChart';
 
 const AppHead = props => {
     //props
@@ -13,7 +13,7 @@ const AppHead = props => {
         <header className='AppHead'>
             <Card text="Wallet balance" value={balance}/>
             <Card text="Expenses" value={expenses}/>
-            <PieChart />
+            <PieChartComp />
         </header>
     );
 };
