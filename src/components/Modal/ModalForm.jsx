@@ -8,10 +8,14 @@ import { MoneyContext, TransactionsContext } from '../../Contexts/AllContexts';
 
 const ModalForm = props => {
     //props
-    const { toggleModal, formType } = props;
+    const { toggleModal, formType, existingData } = props;
     //contexts
     const [money, setMoney] = useContext(MoneyContext);
     const [transactionData, setTransactionData] = useContext(TransactionsContext);
+    //check for existing data to update transaction
+    useEffect(()=> {
+        if(existingData) updateFormDataWithExistingData();
+    }, [])
     //states
     const [formData, setFormData] = useState({
         name: "",
@@ -21,19 +25,31 @@ const ModalForm = props => {
     })
     const [balanceFormData, setBalanceFormData] = useState({income: ""});
     //functions
+    const updateFormDataWithExistingData = () => {
+        console.log(existingData)
+        const {name, date, amount, category} = existingData;
+        setFormData({
+            name: name,
+            price: amount,
+            date: date,
+            category: category
+        })
+    }
     const handleChange = evt => {
         const key = evt.target.name, value = evt.target.value;
         setFormData({...formData, [key]: value });
     }
     const handleSubmit = evt => {
         evt.preventDefault();
+        // Edit Expense
         if(formType === "Add Balance"){
             setMoney({
                 ...money,
                 balance: money.balance + balanceFormData.income
             });
-        }else{
-            let newExp = money.expenses + Number(formData.price);
+        }
+        if(formType === "Add Expense"){
+            let newExpense = money.expenses + Number(formData.price);
             let newBalance = money.balance - Number(formData.price);
 
             if(newBalance < 0){
@@ -41,9 +57,22 @@ const ModalForm = props => {
             }else{
                 let newId = new Date / 1;
                 let newTransaction = {...formData, id: newId};
-                setMoney({balance: newBalance, expenses: newExp});
+                setMoney({balance: newBalance, expenses: newExpense});
                 setTransactionData([...transactionData, newTransaction]);
             }
+        }
+        if(formType === "Edit Expense"){
+            let newExpense = money.expenses + Number(formData.price) - Number(existingData.amount);
+            let newBalance = money.balance - Number(formData.price) + Number(existingData.amount);
+            //get index of transaction
+            const indexOfTransaction = transactionData.findIndex(transaction => existingData.id === transaction.id);
+            //store transaction data in new variable
+            const updatedTransaction = {...formData, id: existingData.id};
+            //add that new tranaction at that index with same id
+            transactionData[indexOfTransaction] = updatedTransaction;
+
+            setMoney({balance: newBalance, expenses: newExpense});
+            setTransactionData([...transactionData]);
         }
 
         toggleModal();
@@ -54,7 +83,7 @@ const ModalForm = props => {
             <div className='formInputsDiv'>
                 <input 
                 required
-                value={formData.title}
+                value={formData.name}
                 className="formInput" 
                 onChange={handleChange} 
                 placeholder='Title' 

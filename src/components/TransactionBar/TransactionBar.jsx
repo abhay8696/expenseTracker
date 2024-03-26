@@ -53,11 +53,13 @@ const TransactionBar = props => {
                 <span className='TransactionAmount cardTextRed'>₹{amount}</span>
             </span>
             <Button icon={deleteIcon} buttonSize="smallButton" background="backgroundRed" clickFunction={deleteTransaction}/>
-            <Button icon={editIcon} buttonSize="smallButton" background="backgroundOrange" clickFunction={toggleModal}/>
+            <Button icon={editIcon} buttonSize="smallButton" background="backgroundOrange" clickFunction={toggleModal} />
             {modalOn ? 
                 <Modal 
                 toggleModal={toggleModal} 
-                text="Edit Expense"/> 
+                text="Edit Expense"
+                existingData={{name, date, amount, category, id}}
+                /> 
             :null
             }
         </div>

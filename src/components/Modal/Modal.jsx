@@ -6,13 +6,13 @@ import ModalForm from './ModalForm';
 
 const Modal = props => {
     //props
-    const { toggleModal, text } = props;
+    const { toggleModal, text, existingData } = props;
     
     return (
         <div className='Modal' onClick={toggleModal}>
             <div className='modalBody' onClick={e => e.stopPropagation()}>
                 <div className='modalHead'>{text}</div>
-                <ModalForm formType={text} toggleModal={toggleModal}/>
+                <ModalForm existingData={existingData} formType={text} toggleModal={toggleModal}/>
             </div>
         </div>
     );
