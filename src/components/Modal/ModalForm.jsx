@@ -76,9 +76,9 @@ const ModalForm = props => {
                 placeholder='Select Category' 
                 name='category'>
                     <option value={null}>Select Category</option>
-                    <option value="Food">Food</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Travel">Travel</option>
+                    <option value="food">Food</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="travel">Travel</option>
                 </select>
                 <input 
                 required

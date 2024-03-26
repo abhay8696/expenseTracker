@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 //styles
 import "./TransactionBar.css"
+//asstes
+import foodIcon from "../../assets/food.svg";
+import movieIcon from "../../assets/movie.svg";
+import travelIcon from "../../assets/travel.svg";
 import deleteIcon from "../../assets/closeIcon.svg";
 import editIcon from "../../assets/editIcon.svg";
 //components
@@ -10,15 +14,20 @@ import Modal from '../Modal/Modal';
 
 const TransactionBar = props => {
     //props
-    const { name, date, amount, icon } = props;
+    const { name, date, amount, category } = props;
     //states
     const [modalOn, setModalOn] = useState(false);
     //functions
     const toggleModal = () => setModalOn(!modalOn);
+    const selectIcon = () => {
+        if(category === "food") return foodIcon;
+        if(category === "entertainment") return movieIcon;
+        if(category === "travel") return travelIcon;
+    }
     return (
-        <div className='TransactionBar'>
+        <div className='TransactionBar' onClick={console.log(category)}>
             <span className='transactionIcon'>
-                <img src={icon}/>
+                <img src={selectIcon()}/>
             </span>
             <span className='TransactionBarBody'>
                 <span className='TransactionText'>
