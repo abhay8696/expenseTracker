@@ -39,8 +39,10 @@ const ModalForm = props => {
             if(newBalance < 0){
                 return alert("Out of balance");
             }else{
+                let newId = new Date / 1;
+                let newTransaction = {...formData, id: newId};
                 setMoney({balance: newBalance, expenses: newExp});
-                setTransactionData([...transactionData, formData]);
+                setTransactionData([...transactionData, newTransaction]);
             }
         }
 

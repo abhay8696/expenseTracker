@@ -9,21 +9,21 @@ export const dummyData = [
       date: "March 20 2024",
       category: "entertainment",
       price: 300,
-      icon: movieIcon
+      id: 1711460238577
     },
     {
       name: "Samosa",
       date: "March 21 2024",
       category: "food",
       price: 50,
-      icon: foodIcon
+      id: 1711460238574
     },
     {
       name: "Auto",
       date: "March 19 2024",
       category: "travel",
       price: 150,
-      icon: travelIcon
+      id: 1711460238579
     },
   ]
 

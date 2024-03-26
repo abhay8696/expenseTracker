@@ -16,8 +16,8 @@ const TransactionsBody = () => {
         if(transactionData && transactionData.length){
             return(
                 transactionData.map(item => {
-                    const { name, date, price, category } = item;
-                    return <TransactionBar key={`${key++}`} name={name} date={date} amount={price} category={category}/>
+                    const { name, date, price, category, id } = item;
+                    return <TransactionBar key={`${key++}`} name={name} date={date} amount={price} category={category} id={id}/>
                 })
             )
         }

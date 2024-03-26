@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 //styles
 import "./TransactionBar.css"
 //asstes
@@ -10,11 +10,16 @@ import editIcon from "../../assets/editIcon.svg";
 //components
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
+import { MoneyContext, TransactionsContext } from '../../Contexts/AllContexts';
+//contexts
 
 
 const TransactionBar = props => {
     //props
-    const { name, date, amount, category } = props;
+    const { name, date, amount, category, id } = props;
+    //contexts
+    const [money, setMoney] = useContext(MoneyContext);
+    const [transactionData, setTransactionData] = useContext(TransactionsContext);
     //states
     const [modalOn, setModalOn] = useState(false);
     //functions
@@ -24,8 +29,19 @@ const TransactionBar = props => {
         if(category === "entertainment") return movieIcon;
         if(category === "travel") return travelIcon;
     }
+    const deleteTransaction = () => {
+        const indexOfTransaction = transactionData.findIndex(item => id === item.id);
+
+        const newBalance = money.balance + amount;
+        const newExpense = money.expenses - amount;
+
+        transactionData.splice(indexOfTransaction, 1);
+
+        setTransactionData([...transactionData]);
+        setMoney({balance: newBalance, expenses: newExpense});
+    }
     return (
-        <div className='TransactionBar' onClick={console.log(category)}>
+        <div className='TransactionBar'>
             <span className='transactionIcon'>
                 <img src={selectIcon()}/>
             </span>
@@ -36,7 +52,7 @@ const TransactionBar = props => {
                 </span>
                 <span className='TransactionAmount cardTextRed'>₹{amount}</span>
             </span>
-            <Button icon={deleteIcon} buttonSize="smallButton" background="backgroundRed"/>
+            <Button icon={deleteIcon} buttonSize="smallButton" background="backgroundRed" clickFunction={deleteTransaction}/>
             <Button icon={editIcon} buttonSize="smallButton" background="backgroundOrange" clickFunction={toggleModal}/>
             {modalOn ? 
                 <Modal 
