@@ -2,11 +2,13 @@ import React from 'react';
 //styles
 import "./PieLabel.css";
 
-const PieLabel = () => {
+const PieLabel = props => {
+    //props
+    const { name, color } = props;
     return (
         <div className='pieLabel'>
-            <span className='labelColorBar'></span>
-            <span className='labelText'>Food</span>
+            <span className='labelColorBar' style={{backgroundColor: color}}></span>
+            <span className='labelText'>{name}</span>
         </div>
     );
 };

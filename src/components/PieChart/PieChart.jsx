@@ -7,7 +7,7 @@ import PieLabel from '../PieLabel/PieLabel';
 import { TransactionsContext } from '../../Contexts/AllContexts';
 
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+const COLORS = ['#A000FF', '#FDE006', '#FF9304'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -81,9 +81,9 @@ const PieChartComp = () => {
                 </ResponsiveContainer>
             </div>
             <div className='pieLabelsDiv'>
-                <PieLabel name="Food"/>
-                <PieLabel name="Entertainment"/>
-                <PieLabel name="Travel"/>
+                <PieLabel name="Food" color="#A000FF"/>
+                <PieLabel name="Entertainment" color="#FDE006"/>
+                <PieLabel name="Travel" color="#FF9304"/>
             </div>
         </div>
     );
