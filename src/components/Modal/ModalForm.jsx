@@ -32,9 +32,16 @@ const ModalForm = props => {
                 ...money,
                 balance: money.balance + balanceFormData.income
             });
-            // console.log(balanceFormData.income)
         }else{
-            setTransactionData([...transactionData, formData])
+            let newExp = money.expenses + Number(formData.price);
+            let newBalance = money.balance - Number(formData.price);
+
+            if(newBalance < 0){
+                return alert("Out of balance");
+            }else{
+                setMoney({balance: newBalance, expenses: newExp});
+                setTransactionData([...transactionData, formData]);
+            }
         }
 
         toggleModal();
