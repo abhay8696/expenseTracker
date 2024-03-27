@@ -15,7 +15,7 @@ const PageNavigateBar = props => {
             <Button 
             icon={leftArrowIcon} 
             buttonSize="smallButton" 
-            background="" 
+            background={pages.currentPage === 1 ? "" : "shadow"} 
             clickFunction={()=> updatePage("left")}
             />
             <Button 
@@ -26,7 +26,7 @@ const PageNavigateBar = props => {
             <Button 
             icon={rightArrowIcon} 
             buttonSize="smallButton" 
-            background="" 
+            background={pages.currentPage === pages.totalPages ? "" : "shadow"} 
             clickFunction={()=> updatePage("right")}
             />
         </div>

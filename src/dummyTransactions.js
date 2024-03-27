@@ -39,5 +39,12 @@ export const dummyData = [
       price: 100,
       id: 17114602385755
     },
+    {
+      name: "IPL Match",
+      date: "2024-03-18",
+      category: "food",
+      price: 3000,
+      id: 171146023857578
+    },
   ]
 
