@@ -10,29 +10,32 @@ import { TransactionsContext } from '../../Contexts/AllContexts';
 const TransactionsBody = () => {
     //contexts
     const [transactionData, setTransactionData] = useContext(TransactionsContext);
-    const [pages, setPages] = useState({
-        currentPage: 1,
-        totalPages: 1
-    })
+    //states
+    const [pages, setPages] = useState({ currentPage: 1, totalPages: 1 })
     //everytime transactionData updates
     useEffect(()=> {
-        setPagesCount();
+        onLoad();
     }, [transactionData])
     //functions
     const displayTransactions = () => {
         let key = 0;
         if(transactionData && transactionData.length){
-            let bars = 
-                transactionData.map(item => {
-                    const { name, date, price, category, id } = item;
-                    return <TransactionBar key={`${key++}`} name={name} date={date} amount={price} category={category} id={id}/>
-                });
-            
-            bars.push( <PageNavigateBar key={"pageNavigate"} pages={pages} updatePage={updatePage} /> )
-            return bars;
+            let arr =[];
+            let startIndex = 5 * (pages.currentPage - 1)
+            let endIndex = (5 * pages.currentPage) - 1
+
+            for(let i = startIndex; i <= endIndex; i++){
+                if(i >= transactionData.length) break;
+                const { name, date, price, category, id } = transactionData[i];
+                arr.push(
+                    <TransactionBar key={`${key++}`} name={name} date={date} amount={price} category={category} id={id}/>
+                )
+            }
+
+            return arr;
         }
     }
-    const setPagesCount = () =>{
+    const onLoad = () =>{
         setPages({ currentPage: 1, totalPages: Math.ceil(transactionData.length / 5) })
     }
     
@@ -46,7 +49,14 @@ const TransactionsBody = () => {
         }
     }
     return (
-        <div className='TransactionBody'> {displayTransactions()} </div>
+        <div className='TransactionBody'>
+            <div className='transactionBodyUpper'>
+                <div className='transactionPage'>{displayTransactions()}</div>
+            </div>
+            <div className='transactionBodylower'>
+                <PageNavigateBar key={"pageNavigate"} pages={pages} updatePage={updatePage} />
+            </div>
+        </div>
     );
 };
 

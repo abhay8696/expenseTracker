@@ -28,28 +28,14 @@ export const dummyData = [
     {
       name: "Bus",
       date: "2024-03-18",
-      category: "entertainment",
+      category: "travel",
       price: 100,
       id: 17114602385755
     },
     {
-      name: "Bus",
+      name: "Burger",
       date: "2024-03-18",
-      category: "entertainment",
-      price: 100,
-      id: 17114602385755
-    },
-    {
-      name: "Bus",
-      date: "2024-03-18",
-      category: "entertainment",
-      price: 100,
-      id: 17114602385755
-    },
-    {
-      name: "Bus",
-      date: "2024-03-18",
-      category: "entertainment",
+      category: "food",
       price: 100,
       id: 17114602385755
     },
