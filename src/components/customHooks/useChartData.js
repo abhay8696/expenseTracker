@@ -10,9 +10,9 @@ const useChartData = initialData => {
     //everytime transactionData updates
     useEffect(()=> {
         setChartData([
-            { name: 'food', value: 0 },
-            { name: 'entertainment', value: 0 },
-            { name: 'travel', value: 0 },
+            { name: 'Entertainment', value: 0 },
+            { name: 'Food', value: 0 },
+            { name: 'Travel', value: 0 },
         ]);
         calculateCategories();
     }, [transactionData])
@@ -23,15 +23,15 @@ const useChartData = initialData => {
         transactionData.forEach(item => {
             if(item.category === "food"){
                 foodTotal += Number(item.price);
-                setChartData(pre=>[{name: "food", value: foodTotal}, pre[1], pre[2]])
+                setChartData(pre=>[pre[0], {name: "Food", value: foodTotal},pre[2]])
             }
             if(item.category === "entertainment"){
                 entertainmentTotal += Number(item.price);
-                setChartData(pre=>[pre[0], {name: "entertainment", value: entertainmentTotal}, pre[2]])
+                setChartData(pre=>[{name: "Entertainment", value: entertainmentTotal}, pre[1], pre[2]])
             }
             if(item.category === "travel") {
                 travelTotal += Number(item.price);
-                setChartData(pre=>[pre[0], pre[1], {name: "travel", value: travelTotal}])
+                setChartData(pre=>[pre[0], pre[1], {name: "Travel", value: travelTotal}])
             }
         });
     }

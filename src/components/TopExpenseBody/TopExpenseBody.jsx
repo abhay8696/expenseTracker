@@ -4,7 +4,7 @@ import "../TransactionsBody/TransactionsBody.css";
 //hooks
 import useChartData from '../customHooks/useChartData';
 //library
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 const TopExpenseBody = () => {
     //hooks
@@ -15,12 +15,12 @@ const TopExpenseBody = () => {
         ]);
 
     return (
-        <div className='TopExpensesBody'>
+        <div className='TopExpensesBody' style={{height: "100px"}}>
             <ResponsiveContainer width="100%" height="100%" >
-                <BarChart width={150} height={40} data={chartData} layout="vertical">
+                <BarChart data={chartData} layout="vertical" barSize={30}>
                     <XAxis type='number' hide/>
-                    <YAxis type="category" width={120} height={50} dataKey="name"/>
-                    <Bar dataKey="value" fill="#8784D2" height={50}/>
+                    <YAxis type="category" width={120} dataKey="name"/>
+                    <Bar dataKey="value" fill="#8784D2" />
                     {/* <Tooltip/> */}
                 </BarChart>
             </ResponsiveContainer>
