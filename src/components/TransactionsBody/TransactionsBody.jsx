@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 //styles
 import "./TransactionsBody.css"
 import foodIcon from "../../assets/food.svg"
@@ -10,6 +10,14 @@ import { TransactionsContext } from '../../Contexts/AllContexts';
 const TransactionsBody = () => {
     //contexts
     const [transactionData, setTransactionData] = useContext(TransactionsContext);
+    const [pages, setPages] = useState({
+        currentPage: 1,
+        totalPages: 1
+    })
+    //everytime transactionData updates
+    useEffect(()=> {
+        setPagesCount();
+    }, [transactionData])
     //functions
     const displayTransactions = () => {
         let key = 0;
@@ -21,6 +29,13 @@ const TransactionsBody = () => {
                 })
             )
         }
+    }
+    const setPagesCount = () => {
+        let totalPages = Math.ceil(transactionData.length / 5)
+        setPages({
+            currentPage: 1,
+            totalPages
+        })
     }
     return (
         <div className='TransactionBody'> {displayTransactions()} </div>

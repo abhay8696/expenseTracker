@@ -9,7 +9,7 @@ import { TransactionsContext } from '../../Contexts/AllContexts';
 import useChartData from '../customHooks/useChartData';
 
 
-const COLORS = ['#A000FF', '#FDE006', '#FF9304'];
+const COLORS = ['#FF9304', '#A000FF', '#FDE006'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -27,9 +27,9 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 const PieChartComp = () => {
     //hooks
     const chartData  = useChartData([
-            { name: 'food', value: 0 },
-            { name: 'entertainment', value: 0 },
-            { name: 'travel', value: 0 },
+            { name: 'Entertainment', value: 0 },
+            { name: 'Food', value: 0 },
+            { name: 'Travel', value: 0 },
         ]);
         
     return (
@@ -56,8 +56,8 @@ const PieChartComp = () => {
             </div>
             <div className='pieLabelsDiv'>
                 <PieLabel name="Food" color="#A000FF"/>
-                <PieLabel name="Entertainment" color="#FDE006"/>
-                <PieLabel name="Travel" color="#FF9304"/>
+                <PieLabel name="Entertainment" color="#FF9304"/>
+                <PieLabel name="Travel" color="#FDE006"/>
             </div>
         </div>
     );
