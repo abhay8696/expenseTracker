@@ -15,7 +15,10 @@
     padding: 0.5rem 2rem;
     font-weight: 500;
 }
-
+.mediumButton{
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
 .smallButton{
     padding: 0.5rem;
     font-weight: 500;
@@ -38,4 +41,8 @@
 .backgroundWhite{
     background-color: white;
     color: #000;
+}
+.backgroundDarkGreen{
+    background-color: #43967B;
+    color: white;
 }
