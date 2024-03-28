@@ -14,8 +14,8 @@ function App() {
   // const [balance, setBalance] = useState(5000);
   // const [expenses, setExpenses] = useState(0);
   const [money, setMoney] = useState({
-    balance: 4300,
-    expenses: 700
+    balance: 3800,
+    expenses: 1200
   })
   const [transactionData, setTransactionData] = useState(dummyData)
 

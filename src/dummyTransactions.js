@@ -42,8 +42,8 @@ export const dummyData = [
     {
       name: "IPL Match",
       date: "2024-03-18",
-      category: "food",
-      price: 3000,
+      category: "entertainment",
+      price: 500,
       id: 171146023857578
     },
   ]
