@@ -19,7 +19,6 @@ const useChartData = initialData => {
     //functions
     const calculateCategories = () => {
         let foodTotal = 0, entertainmentTotal = 0, travelTotal = 0;
-        console.log("transactionData updated", transactionData)
         transactionData.forEach(item => {
             if(item.category === "food"){
                 foodTotal += Number(item.price);
